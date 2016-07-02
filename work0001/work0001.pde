@@ -1,5 +1,5 @@
-float tStep = 0;
-float tStepVelocity = 0.05;
+float phiStep = 0; // 角度phiの間隔
+float phiStepVelocity = 0.05; // phiStepの更新間隔
 
 void setup() {
   size(1280, 720, P3D);
@@ -13,30 +13,35 @@ void draw() {
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
 
-  float px = 0, py = 0, pz = 0;
-  float radius = height * 0.4;
-  boolean firstLoop = true;
+  float px = 0, py = 0, pz = 0;  // 1つ前の座標
+  float radius = height * 0.4; // 球体の半径
+  boolean firstLoop = true; // ループの最初かどうか
 
-  for (float s = 0, t = 0; s <= 180; s++, t+=tStep) {
-    float theta = radians(s);
-    float phi = radians(t);
+  for (float dTheta = 0, dPhi = 0; dTheta <= 180; dTheta++, dPhi += phiStep) {
+    float theta = radians(dTheta);
+    float phi = radians(dPhi);
 
+    // 球体の座標を計算
     float x = radius * sin(theta) * cos(phi);
     float y = radius * sin(theta) * sin(phi);
     float z = radius * cos(theta);
 
     stroke(210, 80, 80);
+    // 2ループ目以降なら線を描画
     if (!firstLoop) {
       strokeWeight(1);
       line(x, y, z, px, py, pz);
     } else firstLoop = false;
 
-    strokeWeight(10);
+    // 点を描画
+    strokeWeight(15);
     point(x, y, z);
 
+    // 1つ前の座標を更新
     px = x;
     py = y;
     pz = z;
   }
-  tStep += tStepVelocity;
+  // phiStepを更新
+  phiStep += phiStepVelocity;
 }
