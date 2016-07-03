@@ -8,7 +8,7 @@ void setup() {
 }
 
 void draw() {
-  background(210, 80, 5);
+  background(210, 80, 8);
   translate(width/2, height/2, 0);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
@@ -26,7 +26,7 @@ void draw() {
     float y = radius * sin(theta) * sin(phi);
     float z = radius * cos(theta);
 
-    stroke(210, 80, 80);
+    stroke(200, 80, 80);
     // 2ループ目以降なら線を描画
     if (!firstLoop) {
       strokeWeight(1);
