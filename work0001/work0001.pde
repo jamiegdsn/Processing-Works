@@ -45,3 +45,9 @@ void draw() {
   // phiStepを更新
   phiStep += phiStepVelocity;
 }
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("frame.jpg");
+  }
+}
