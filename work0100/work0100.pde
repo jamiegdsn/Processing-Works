@@ -19,7 +19,7 @@ void setup() {
 // パーティクルの初期化
 void initParticles() {
   particles.clear();
-  numParticles = 10000; // 数はウィンドウサイズに合わせて調節してくれ
+  numParticles = 10000; // 数はウィンドウサイズに合わせて調節
   for (int i = 0; i < numParticles; i++) {
     float posX = random(width);
     particles.add(new Particle(posX, 0));
@@ -29,7 +29,7 @@ void initParticles() {
 // 力場の初期化
 void initFields() {
   fields.clear();
-  numFields = 100; // 数はウィンドウサイズに合わせて調節してくれ
+  numFields = 100; // 数はウィンドウサイズに合わせて調節
   for (int i = 0; i < numFields; i++) {
     float posX = random(width);
     float posY = random(200, height-100);
