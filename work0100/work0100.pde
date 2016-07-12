@@ -33,14 +33,9 @@ void initFields() {
   for (int i = 0; i < numFields; i++) {
     float posX = random(width);
     float posY = random(200, height-100);
-    fields.add(new ForceField(posX, posY));
-  }
-}
-
-void draw() {
-  for (Particle particle : particles) {
-    particle.update(fields);
-    particle.display();
+    // 引力か斥力かをランダムに決定
+    int type = random(-1, 1) > 0 ? 1 : -1;
+    fields.add(new ForceField(posX, posY, type));
   }
 
   if (debug) {
@@ -50,11 +45,18 @@ void draw() {
   }
 }
 
+void draw() {
+  for (Particle p : particles) {
+    p.update(fields);
+    p.display();
+  }
+}
+
 void keyPressed() {
   if (key == 'r') {
     background(0, 0, 3);
-    initFields();
     initParticles();
+    initFields();
   }
   if (key == 's') {
     saveFrame("frame-####.jpg");
@@ -75,7 +77,7 @@ class Particle {
     pPosition = new PVector(x, y);
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
-    gravity = new PVector(0, random(0.03, 0.06));
+    gravity = new PVector(0, random(0.05, 0.1));
     c = color(random(180, 230), random(40, 80), random(10));
   }
 
@@ -84,7 +86,7 @@ class Particle {
       PVector force = PVector.sub(f.position, position);
       float dist = force.mag();
       if (dist <= f.radius) {
-        force.normalize().mult(-0.08);
+        force.normalize().mult(f.forceType * f.strength);
         acceleration.add(force);
       }
     }
@@ -92,7 +94,7 @@ class Particle {
     velocity.add(acceleration);
     position.add(velocity);
     acceleration.mult(0);
-    velocity.mult(0.99);
+    velocity.mult(0.98);
   }
 
   void display() {
@@ -107,10 +109,14 @@ class Particle {
 class ForceField {
   PVector position;
   float radius;
+  int forceType;
+  float strength;
 
-  ForceField(float x, float y) {
+  ForceField(float x, float y, int type) {
     position = new PVector(x, y);
     radius = random(40, 80);
+    forceType = type;
+    strength = random(0.2);
   }
 
   void display() {
