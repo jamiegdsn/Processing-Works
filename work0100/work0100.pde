@@ -11,6 +11,7 @@ void setup() {
   colorMode(HSB, 360, 100, 100, 100);
   blendMode(ADD);
   background(0, 0, 3);
+  strokeWeight(0.5);
   strokeCap(SQUARE);
   initParticles();
   initFields();
@@ -19,7 +20,7 @@ void setup() {
 // パーティクルの初期化
 void initParticles() {
   particles.clear();
-  numParticles = 10000; // 数はウィンドウサイズに合わせて調節
+  numParticles = 20000; // 数はウィンドウサイズに合わせて調節
   for (int i = 0; i < numParticles; i++) {
     float posX = random(width);
     particles.add(new Particle(posX, 0));
@@ -78,7 +79,7 @@ class Particle {
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
     gravity = new PVector(0, random(0.05, 0.1));
-    c = color(random(180, 230), random(40, 80), random(10));
+    c = color(random(180, 230), random(40, 80), random(15));
   }
 
   void update(ArrayList<ForceField> fields) {
@@ -99,7 +100,6 @@ class Particle {
 
   void display() {
     stroke(c);
-    strokeWeight(2);
     line(pPosition.x, pPosition.y, position.x, position.y);
     pPosition = position.copy();
   }
