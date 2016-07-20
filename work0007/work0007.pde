@@ -28,7 +28,7 @@ void draw() {
   for (int i = 0; i < numLines; i++) {
     // このfor文の繰り返し数を増やすと描画が早くなる
     // さっさと壁紙作りたいとき便利
-    for (int j = 0; j < 3; j++) {
+    for (int j = 0; j < 1; j++) {
       lines[i].update();
       lines[i].display();
     }
