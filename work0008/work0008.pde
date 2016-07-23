@@ -2,7 +2,8 @@ ArrayList<Particle> particles = new ArrayList<Particle>();
 color bgColor;
 
 void setup () {
-  size(1280, 720, P3D);
+  fullScreen(P3D);
+  // size(1280, 720, P3D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
   bgColor = color(0, 0, 98);
