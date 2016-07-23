@@ -36,7 +36,7 @@ class Particle {
     float noisePosY = sNoisePosY + phi * noiseScale;
     float angle = noise(noisePosX, noisePosY) * (4 * TWO_PI) - (2 * TWO_PI);
     if (isInsane) {
-      radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.5, height);
+      radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.5, height * 0.6);
     } else {
       radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.3, height * 0.5);
     }
