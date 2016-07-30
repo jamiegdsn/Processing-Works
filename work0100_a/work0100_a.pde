@@ -9,7 +9,7 @@ void setup() {
   fullScreen(P2D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
-  blendMode(ADD);
+  blendMode(SCREEN);
   background(0, 0, 3);
   strokeWeight(0.5);
   strokeCap(SQUARE);
@@ -79,7 +79,7 @@ class Particle {
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
     gravity = new PVector(0, random(0.05, 0.1));
-    c = color(random(180, 230), random(40, 80), random(15));
+    c = color(random(180, 230), random(60, 80), random(15));
   }
 
   void update(ArrayList<ForceField> fields) {
