@@ -15,7 +15,7 @@ class Point {
     this.radius = radius;
     targetRadius = radius;
     xzDistance = dist(0, 0, radius * unitX, radius * unitZ);
-    c = color(random(180, 220), random(60, 80), random(20));
+    c = color(random(180, 220), 80, random(30));
     startTime = millis();
     delay = (int)random(300);
     calcCordinate();

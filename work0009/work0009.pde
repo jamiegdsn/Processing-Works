@@ -2,12 +2,10 @@ int numFragments = 20;
 ArrayList<SphereFragment> sFragments = new ArrayList<SphereFragment>();
 
 void setup() {
-  // fullScreen(P3D);
-  size(1200, 1200, P3D);
+  fullScreen(P3D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
-  smooth(8);
-  blendMode(ADD);
+  blendMode(SCREEN);
   hint(DISABLE_DEPTH_TEST);
   initSphere();
 }
@@ -35,7 +33,7 @@ void initSphere() {
 
 void draw() {
   background(210, 80, 5);
-  // showFrameRate();
+  showFrameRate();
   translate(width/2, height/2, 0);
 
   for (SphereFragment sf : sFragments) {
@@ -45,8 +43,8 @@ void draw() {
 }
 
 void showFrameRate() {
-  fill(0 , 0, 100);
-  text(frameRate, 100, 100);
+  fill(0, 0, 100);
+  text(frameRate, 20, 20);
 }
 
 void keyPressed() {
@@ -54,6 +52,6 @@ void keyPressed() {
     initSphere();
   }
   if (key == 's') {
-    saveFrame("frame-####.jpg");
+    saveFrame("frames/frame-####.jpg");
   }
 }
