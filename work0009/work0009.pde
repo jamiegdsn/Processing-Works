@@ -33,7 +33,7 @@ void initSphere() {
 
 void draw() {
   background(210, 80, 5);
-  showFrameRate();
+  // showFrameRate();
   translate(width/2, height/2, 0);
 
   for (SphereFragment sf : sFragments) {
@@ -52,6 +52,6 @@ void keyPressed() {
     initSphere();
   }
   if (key == 's') {
-    saveFrame("frames/frame-####.jpg");
+    saveFrame("images/frame-####.jpg");
   }
 }
