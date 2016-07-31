@@ -13,13 +13,13 @@ void setup() {
 void initSphere() {
   sFragments.clear();
   for (int i = 0; i < numFragments; i++) {
-    float startTheta = radians(random(180));
+    float startTheta = radians(random(40, 140));
     float endTheta;
     if (random(2) < 1) {
-      endTheta = startTheta + radians(random(20, 45));
+      endTheta = startTheta + radians(random(20, 40));
     } else {
       endTheta = startTheta;
-      startTheta -= radians(random(20, 45));
+      startTheta -= radians(random(20, 40));
     }
     startTheta = max(startTheta, radians(10));
     endTheta = min(endTheta, radians(170));

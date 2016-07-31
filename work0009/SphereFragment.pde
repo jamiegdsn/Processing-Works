@@ -35,7 +35,7 @@ class SphereFragment {
     }
     lengthLimit = map((minXZDist+maxXZDist)/2, 0, maxRadius, 0, height * 0.1);
     numPoints = points.size();
-    rotSpeed = random(-0.02, 0.02);
+    rotSpeed = random(-0.01, 0.01);
 
     for (int i = 0; i < numPoints; i++) {
       Point fromP = points.get(i);

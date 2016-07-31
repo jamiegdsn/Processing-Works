@@ -32,7 +32,7 @@ class Point {
 
   void update() {
     if (millis() - startTime > delay) {
-      radius += (targetRadius - radius) * 0.08;
+      radius += (targetRadius - radius) * 0.05;
     }
     calcCordinate();
   }
