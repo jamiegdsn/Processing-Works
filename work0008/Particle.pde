@@ -2,11 +2,10 @@ class Particle {
   float x, y, z;
   float radius;
   float theta, phi;
-  float velocityMag = 0.015;
-  float noiseScale = 1;
+  float velocityMag = 0.01;
+  float noiseScale = 0.2;
   float sNoisePosX, sNoisePosY;
   color strokeColor;
-  boolean isInsane;
 
   Particle() {
     initAngle();
@@ -17,12 +16,7 @@ class Particle {
       case 2: sNoisePosX = -100; sNoisePosY = 100; break;
       case 3: sNoisePosX = -100; sNoisePosY = -100; break;
     }
-    isInsane = random(100) < 1 ? true : false;
-    if (isInsane) {
-      strokeColor = color(random(160, 220), 80, 80, 40);
-    } else {
-      strokeColor = color(random(160, 220), 80, 60, 5);
-    }
+    strokeColor = color(0, 0, 100, 1);
   }
 
   void initAngle() {
@@ -35,18 +29,14 @@ class Particle {
     float noisePosX = sNoisePosX + theta * noiseScale;
     float noisePosY = sNoisePosY + phi * noiseScale;
     float angle = noise(noisePosX, noisePosY) * (4 * TWO_PI) - (2 * TWO_PI);
-    if (isInsane) {
-      radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.5, height * 0.6);
-    } else {
-      radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.3, height * 0.5);
-    }
+    radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.3, height * 0.6);
 
     theta += velocityMag * cos(angle);
     phi   += velocityMag * sin(angle);
 
     x = radius * sin(theta) * cos(phi);
-    y = radius * sin(theta) * sin(phi);
-    z = radius * cos(theta);
+    y = radius * cos(theta);
+    z = radius * sin(theta) * sin(phi);
   }
 
   void display() {

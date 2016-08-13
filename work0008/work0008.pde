@@ -1,4 +1,6 @@
 ArrayList<Particle> particles = new ArrayList<Particle>();
+int numParticles = 1000;
+float lengthLimit = 40;
 color bgColor;
 
 void setup () {
@@ -6,14 +8,12 @@ void setup () {
   // size(1280, 720, P3D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
-  bgColor = color(0, 0, 98);
+  bgColor = color(215, 80, 8);
   background(bgColor);
   initPoints();
 }
 
 void initPoints() {
-  int numParticles = 10000;
-
   particles.clear();
   for (int i = 0; i < numParticles; i++) {
     particles.add(new Particle());
@@ -21,21 +21,41 @@ void initPoints() {
   strokeWeight(1);
 }
 
+void reset() {
+  background(bgColor);
+  noiseSeed(millis());
+  initPoints();
+}
+
 void draw() {
+  if (frameCount % 360 == 0) {
+    noiseSeed(millis());
+  }
   translate(width/2, height/2, 0);
-  rotateY(HALF_PI);
+  rotateZ(HALF_PI);
 
   for (Particle p : particles) {
     p.update();
     p.display();
   }
+  
+  strokeWeight(0.5);
+  for (int i = 0;  i < numParticles; i++) {
+    Particle from = particles.get(i);
+    for (int j = i + 1;  j < numParticles; j++) {
+      Particle to = particles.get(j);
+      float d = dist(from.x, from.y, from.z, to.x, to.y, to.z);
+      if (d < lengthLimit) {
+        stroke(from.strokeColor);
+        line(from.x, from.y, from.z, to.x, to.y, to.z);
+      }
+    }
+  }
 }
 
 void keyPressed() {
   switch (key) {
-    case 'c': background(bgColor); break;
-    case 'r': initPoints(); break;
-    case 'n': noiseSeed(millis()); break;
+    case 'r': reset(); break;
     case 's': saveFrame("images/frame-####.jpg"); break;
   }
 }
