@@ -37,7 +37,7 @@ void draw() {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("image/frame-####.jpg");
+    saveFrame("image/frame-####.png");
   } else if (key == 'r') {
     initWindow();
   }

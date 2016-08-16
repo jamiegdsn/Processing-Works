@@ -60,7 +60,7 @@ void keyPressed() {
     initFields();
   }
   if (key == 's') {
-    saveFrame("frame-####.jpg");
+    saveFrame("images/frame-####.png");
   }
 }
 
@@ -80,8 +80,8 @@ class Particle {
     acceleration = new PVector(0, 0);
     gravity = new PVector(0, random(0.05, 0.1));
     // colorRed();
-    // colorGreen();
-    colorBlue();
+    colorGreen();
+    // colorBlue();
   }
 
   void colorRed() {
