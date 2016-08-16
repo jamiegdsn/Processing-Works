@@ -37,7 +37,7 @@ void draw() {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("image/frame-####.png");
+    saveFrame("frames/frame-####.png");
   } else if (key == 'r') {
     initWindow();
   }
@@ -90,12 +90,12 @@ class Line {
 
   // 描画を行うメソッド
   void display() {
-    stroke(hue, 80, 8, 25);
+    stroke(hue, 80, 6, 30);
     strokeWeight(1);
     line(s.x, s.y, s.z, p1.x, p1.y, p1.z);
     line(s.x, s.y, s.z, p2.x, p2.y, p2.z);
 
-    stroke(0, 0, 100, 15);
+    stroke(0, 0, 100, 10);
     strokeWeight(1);
     point(p1.x, p1.y, p1.z);
     point(p2.x, p2.y, p2.z);

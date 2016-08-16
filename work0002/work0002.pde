@@ -89,6 +89,6 @@ void draw() {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("frame-####.png");
+    saveFrame("frames/frame-####.png");
   }
 }

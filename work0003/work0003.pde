@@ -1,6 +1,6 @@
 int numPoints = 1500; // 点の数 ウィンドウサイズで調整してくれ
 int numSpheres = 3;   // 球体の数
-int lengthLimit = 80; // 距離制限 ウィンドウサイズで調整してくれ
+int lengthLimit = 100; // 距離制限 ウィンドウサイズで調整してくれ
 
 Point[] points;
 Sphere[] spheres;
@@ -56,7 +56,7 @@ void draw() {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("frame-####.png");
+    saveFrame("frames/frame-####.png");
   }
   if (key == 'r') {
     initObjects();
@@ -75,7 +75,7 @@ class Sphere {
   }
   // 半径の大きさを更新
   void update() {
-    radius = 50 + noise(radNoise) * height * 0.4;
+    radius = 100 + noise(radNoise) * height * 0.5;
     radNoise += speed;
   }
 }

@@ -18,13 +18,14 @@ void initPoints() {
   for (int i = 0; i < numParticles; i++) {
     particles.add(new Particle());
   }
-  strokeWeight(1);
+
 }
 
 void reset() {
   background(bgColor);
   noiseSeed(millis());
   initPoints();
+  frameCount = 0;
 }
 
 void draw() {
@@ -34,12 +35,12 @@ void draw() {
   translate(width/2, height/2, 0);
   rotateZ(HALF_PI);
 
+  strokeWeight(0.5);
   for (Particle p : particles) {
     p.update();
     p.display();
   }
 
-  strokeWeight(0.5);
   for (int i = 0;  i < numParticles; i++) {
     Particle from = particles.get(i);
     for (int j = i + 1;  j < numParticles; j++) {
@@ -56,6 +57,6 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case 'r': reset(); break;
-    case 's': saveFrame("images/frame-####.png"); break;
+    case 's': saveFrame("frames/frame-####.png"); break;
   }
 }

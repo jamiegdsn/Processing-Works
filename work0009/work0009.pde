@@ -52,6 +52,6 @@ void keyPressed() {
     initSphere();
   }
   if (key == 's') {
-    saveFrame("images/frame-####.png");
+    saveFrame("frames/frame-####.png");
   }
 }

@@ -54,7 +54,7 @@ class SphereFragment {
       p.update();
     }
 
-    if (random(100) < 0.3) {
+    if (random(100) < 0.1) {
       float targetRadius = random(minRadius, maxRadius);
       for (Point p : points) {
         p.setTargetRadius(targetRadius);

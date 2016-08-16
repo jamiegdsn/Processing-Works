@@ -1,12 +1,12 @@
 ArrayList<Particle> particles = new ArrayList<Particle>();
 int numParticles = 1000;
-float lengthLimit = 50;
+float lengthLimit = 60;
 color bgColor;
 boolean isFirstDraw = true;
 
 void setup () {
-  // fullScreen(P3D);
-  size(1920, 1080, P3D);
+  fullScreen(P3D);
+  // size(1920, 1080, P3D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
   bgColor = color(0, 0, 95);
@@ -26,6 +26,7 @@ void reset() {
   noiseSeed(millis());
   initPoints();
   isFirstDraw = true;
+  frameCount = 0;
 }
 
 void draw() {
@@ -82,6 +83,6 @@ void drawLine(float startAngle, float endAngle, float angleStep, float radius) {
 void keyPressed() {
   switch (key) {
     case 'r': reset(); break;
-    case 's': saveFrame("images/frame-####.png"); break;
+    case 's': saveFrame("frames/frame-####.png"); break;
   }
 }

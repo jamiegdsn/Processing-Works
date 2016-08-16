@@ -36,7 +36,7 @@ class Particle {
     float noisePosX = sNoisePosX + theta * noiseScale;
     float noisePosY = sNoisePosY + phi * noiseScale;
     float angle = noise(noisePosX, noisePosY) * (4 * TWO_PI) - (2 * TWO_PI);
-    radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.2, height * 0.5);
+    radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.2, height * 0.6);
 
     theta += velocityMag * cos(angle);
     phi   += velocityMag * sin(angle);

@@ -60,7 +60,7 @@ void keyPressed() {
     initFields();
   }
   if (key == 's') {
-    saveFrame("images/frame-####.png");
+    saveFrame("frames/frame-####.png");
   }
 }
 
