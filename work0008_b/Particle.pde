@@ -18,9 +18,9 @@ class Particle {
     }
     r = (int)random(100);
     if (r < 33) {
-      strokeColor = color(hue1, 70, 60, 2);
+      strokeColor = color(hue1, 70, 80, 2);
     } else if (r < 66) {
-      strokeColor = color(hue2, 70, 60, 2);
+      strokeColor = color(hue2, 70, 80, 2);
     } else {
       strokeColor = color(0, 0, random(50, 100), 2);
     }
@@ -39,7 +39,7 @@ class Particle {
     radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.2, height * 0.6);
 
     theta += velocityMag * cos(angle);
-    phi   += velocityMag * sin(angle);
+    phi   += 2 * velocityMag * sin(angle);
 
     x = radius * sin(theta) * cos(phi);
     y = radius * cos(theta);

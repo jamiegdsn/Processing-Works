@@ -11,9 +11,9 @@ class Particle {
     initAngle();
     int r = (int)random(4);
     switch (r) {
-      case 0: sNoisePosX = 100; sNoisePosY = 100; break;
-      case 1: sNoisePosX = 100; sNoisePosY = -100; break;
-      case 2: sNoisePosX = -100; sNoisePosY = 100; break;
+      case 0: sNoisePosX =  100; sNoisePosY =  100; break;
+      case 1: sNoisePosX =  100; sNoisePosY = -100; break;
+      case 2: sNoisePosX = -100; sNoisePosY =  100; break;
       case 3: sNoisePosX = -100; sNoisePosY = -100; break;
     }
     r = (int)random(100);
@@ -39,7 +39,7 @@ class Particle {
     radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.2, height * 0.6);
 
     theta += velocityMag * cos(angle);
-    phi   += velocityMag * sin(angle);
+    phi   += 2 * velocityMag * sin(angle);
 
     x = radius * sin(theta) * cos(phi);
     y = radius * cos(theta);

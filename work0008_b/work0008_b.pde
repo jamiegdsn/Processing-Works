@@ -15,12 +15,12 @@ void setup () {
 }
 
 void initPoints() {
+  hue1 = random(360);
+  hue2 = random(360);
   particles.clear();
   for (int i = 0; i < numParticles; i++) {
     particles.add(new Particle());
   }
-  hue1 = random(360);
-  hue2 = random(360);
 }
 
 void reset() {

@@ -1,6 +1,6 @@
 ArrayList<Particle> particles = new ArrayList<Particle>();
 int numParticles = 1000;
-float lengthLimit = 60;
+float lengthLimit = 50;
 color bgColor;
 boolean isFirstDraw = true;
 
@@ -25,8 +25,8 @@ void reset() {
   background(bgColor);
   noiseSeed(millis());
   initPoints();
-  isFirstDraw = true;
   frameCount = 0;
+  isFirstDraw = true;
 }
 
 void draw() {

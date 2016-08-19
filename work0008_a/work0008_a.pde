@@ -18,7 +18,6 @@ void initPoints() {
   for (int i = 0; i < numParticles; i++) {
     particles.add(new Particle());
   }
-
 }
 
 void reset() {

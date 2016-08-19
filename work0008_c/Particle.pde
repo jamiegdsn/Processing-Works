@@ -39,7 +39,7 @@ class Particle {
     radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.2, height * 0.5);
 
     theta += velocityMag * cos(angle);
-    phi   += velocityMag * sin(angle);
+    phi   += 2 * velocityMag * sin(angle);
 
     x = radius * sin(theta) * cos(phi);
     y = radius * cos(theta);
