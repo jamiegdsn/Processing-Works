@@ -6,7 +6,7 @@ int numParticles; // パーティクルの数
 int numFields; // 力場の数
 
 void setup() {
-  fullScreen(P2D);
+  size(2048, 1024, P2D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
   blendMode(SCREEN);

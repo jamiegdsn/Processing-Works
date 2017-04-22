@@ -2,7 +2,7 @@ int numLines = 8; // Lineオブジェクトの数
 Line[] lines = new Line[numLines]; // Lineオブジェクト配列
 
 void setup() {
-  fullScreen(P3D);
+  size(2048, 1024, P3D);
   // RetinaとかのHigh-Resディスプレイ用の処理
   pixelDensity(displayDensity());
   // HSBカラーモード
@@ -28,7 +28,7 @@ void draw() {
   for (int i = 0; i < numLines; i++) {
     // このfor文の繰り返し数を増やすと描画が早くなる
     // さっさと壁紙作りたいとき便利
-    for (int j = 0; j < 1; j++) {
+    for (int j = 0; j < 5; j++) {
       lines[i].update();
       lines[i].display();
     }
@@ -57,12 +57,12 @@ class Line {
     p2 = new PVector();
     s = new PVector();
 
-    sxNoise = new Noise(random(10), 0.01).setRange(-50, 50);
-    syNoise = new Noise(random(10), 0.01).setRange(-50, 50);
-    szNoise = new Noise(random(10), 0.01).setRange(-50, 50);
+    sxNoise = new Noise(random(10), 0.01).setRange(-80, 80);
+    syNoise = new Noise(random(10), 0.01).setRange(-80, 80);
+    szNoise = new Noise(random(10), 0.01).setRange(-80, 80);
 
-    thetaNoise = new Noise(random(10), 0.0015).setRange(-TWO_PI, TWO_PI);
-    phiNoise   = new Noise(random(10), 0.0015).setRange(-TWO_PI, TWO_PI);
+    thetaNoise = new Noise(random(10), 0.001).setRange(-TWO_PI, TWO_PI);
+    phiNoise   = new Noise(random(10), 0.001).setRange(-TWO_PI, TWO_PI);
 
     hue = int(random(360));
     radius = height * 0.45;
@@ -90,7 +90,7 @@ class Line {
 
   // 描画を行うメソッド
   void display() {
-    stroke(hue, 80, 6, 30);
+    stroke(hue, 80, 6, 40);
     strokeWeight(1);
     line(s.x, s.y, s.z, p1.x, p1.y, p1.z);
     line(s.x, s.y, s.z, p2.x, p2.y, p2.z);

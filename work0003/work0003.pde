@@ -6,7 +6,7 @@ Point[] points;
 Sphere[] spheres;
 
 void setup() {
-  fullScreen(P3D);
+  size(2048, 1024, P3D);
   pixelDensity(displayDensity());
   strokeWeight(0.5);
   initObjects();
@@ -43,11 +43,11 @@ void draw() {
   // lengthLimit以下ならその２点間に線を引く
   for (int i = 0; i < points.length; i++) {
     Point fromP = points[i];
-    stroke(fromP.gray);
     for (int j = i + 1; j < points.length; j++) {
       Point toP = points[j];
       float dist = dist(fromP.x, fromP.y, fromP.z, toP.x, toP.y, toP.z);
       if (dist < lengthLimit) {
+        stroke(map(dist, 0, lengthLimit, 0, 200));
         line(fromP.x, fromP.y, fromP.z, toP.x, toP.y, toP.z);
       }
     }

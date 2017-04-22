@@ -6,8 +6,7 @@ int numParticles; // パーティクルの数
 int numFields; // 力場の数
 
 void setup() {
-  fullScreen(P2D);
-  // size(1920, 1080, P2D);
+  size(2048, 1024, P3D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
   background(0, 0, 95);
@@ -98,11 +97,11 @@ class Particle {
   void colorGreen() {
     float r = random(100);
     if (r <= 60) {
-      c = color(random(100, 140), random(30, 50), 60, 15);
+      c = color(random(100, 140), random(30, 50), 60, 12);
     } else if (r <= 90) {
-      c = color(random(200, 220), random(30, 50), 60, 15);
+      c = color(random(200, 220), random(30, 50), 60, 12);
     } else if (r <= 100) {
-      c = color(0, 0, random(20, 60), 20);
+      c = color(0, 0, random(20, 60), 12);
     }
   }
 
