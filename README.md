@@ -14,14 +14,8 @@
 ## work0007
 ![](./img/work0007.png)
 
-## work0008_a
-![](./img/work0008_a.png)
-
-## work0008_b
-![](./img/work0008_b.png)
-
-## work0008_c
-![](./img/work0008_c.png)
+## work0008
+![](./img/work0008.png)
 
 ## work0009
 ![](./img/work0009.png)
