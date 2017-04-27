@@ -5,11 +5,14 @@ boolean debug = false; // trueにすると力場が見える
 int numParticles; // パーティクルの数
 int numFields; // 力場の数
 
+int hue1;
+int hue2;
+
 void setup() {
   size(2048, 1024, P3D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
-  background(0, 0, 95);
+  background(0, 0, 98);
   strokeWeight(0.5);
   strokeCap(SQUARE);
   initParticles();
@@ -18,8 +21,10 @@ void setup() {
 
 // パーティクルの初期化
 void initParticles() {
+  hue1 = (int)random(360);
+  hue2 = (int)random(360);
   particles.clear();
-  numParticles = 30000; // 数はウィンドウサイズに合わせて調節
+  numParticles = 3000; // 数はウィンドウサイズに合わせて調節
   for (int i = 0; i < numParticles; i++) {
     float posX = random(width);
     particles.add(new Particle(posX, 0));
@@ -48,25 +53,38 @@ void initFields() {
 void draw() {
   for (Particle p : particles) {
     p.update(fields);
-    p.display();
   }
+
+  beginShape(LINES);
+  for (int i = 0; i < numParticles; i++) {
+    Particle fromP = particles.get(i);
+    for (int j = i + 1; j < numParticles; j++) {
+      Particle toP = particles.get(j);
+      float d = PVector.dist(fromP.position, toP.position);
+      if (d < 30) {
+        stroke(fromP.c);
+        fromP.addVertex();
+        toP.addVertex();
+      }
+    }
+  }
+  endShape();
 }
 
 void keyPressed() {
   if (key == 'r') {
-    background(0, 0, 95);
+    background(0, 0, 98);
     initParticles();
     initFields();
   }
   if (key == 's') {
-    saveFrame("frames/frame-####.png");
+    saveFrame("frames/####.png");
   }
 }
 
 // パーティクルのクラス
 class Particle {
   PVector position; // 位置
-  PVector pPosition; // 1フレーム前の位置
   PVector velocity; // 速度
   PVector acceleration; // 加速度
   PVector gravity; // 重力
@@ -74,45 +92,14 @@ class Particle {
 
   Particle(float x, float y) {
     position = new PVector(x, y);
-    pPosition = new PVector(x, y);
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
     gravity = new PVector(0, random(0.05, 0.1));
-    // colorRed();
-    colorGreen();
-    // colorBlue();
-  }
-
-  void colorRed() {
-    float r = random(100);
-    if (r <= 60) {
-      c = color(random(300, 340), random(30, 50), 60, 15);
-    } else if (r <= 90) {
-      c = color(random(20, 40), random(30, 50), 60, 15);
-    } else if (r <= 100) {
-      c = color(0, 0, random(20, 60), 20);
-    }
-  }
-
-  void colorGreen() {
-    float r = random(100);
-    if (r <= 60) {
-      c = color(random(100, 140), random(30, 50), 60, 12);
-    } else if (r <= 90) {
-      c = color(random(200, 220), random(30, 50), 60, 12);
-    } else if (r <= 100) {
-      c = color(0, 0, random(20, 60), 12);
-    }
-  }
-
-  void colorBlue() {
-    float r = random(100);
-    if (r <= 60) {
-      c = color(random(200, 240), random(30, 50), 60, 15);
-    } else if (r <= 90) {
-      c = color(random(100, 120), random(30, 50), 60, 15);
-    } else if (r <= 100) {
-      c = color(0, 0, random(20, 60), 20);
+    int r = (int)random(100);
+    if (r < 80) {
+      c = color(hue1, random(30, 50), random(30, 60), 5);
+    } else {
+      c = color(hue2, random(30, 50), random(30, 60), 5);
     }
   }
 
@@ -132,10 +119,8 @@ class Particle {
     velocity.mult(0.98);
   }
 
-  void display() {
-    stroke(c);
-    line(pPosition.x, pPosition.y, position.x, position.y);
-    pPosition = position.copy();
+  void addVertex() {
+    vertex(position.x, position.y);
   }
 }
 
@@ -150,7 +135,7 @@ class ForceField {
     position = new PVector(x, y);
     radius = random(40, 80);
     forceType = type;
-    strength = random(0.2);
+    strength = random(0.1);
   }
 
   void display() {
