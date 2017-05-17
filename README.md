@@ -1,7 +1,5 @@
 # Processing-Works
 
-[僕(Twitter)](https://twitter.com/)のProcessing作品をまとめておくリポジトリです。日本のジェネラティブアート界隈を盛り上げる役に立てればいいなと思います、とかいう綺麗事は置いておいて、ドヤァしたいだけです。作品番号は適当です。気が向けば解説書きます。
-
 ## work0001
 ![](./img/work0001.png)
 
@@ -12,16 +10,16 @@
 ![](./img/work0003.png)
 
 ## work0007
-![](./img/work0007.png)
+![](./img/work0007.jpg)
 
 ## work0008
-![](./img/work0008.png)
+![](./img/work0008.jpg)
 
-## work0009
-![](./img/work0009.png)
+## work0010
+![](./img/work0010.jpg)
 
-## work0100_a
-![](./img/work0100_a.png)
+## work0011_a
+![](./img/work0011_a.png)
 
-## work0100_b
-![](./img/work0100_b.png)
+## work0011_b
+![](./img/work0011_b.png)
