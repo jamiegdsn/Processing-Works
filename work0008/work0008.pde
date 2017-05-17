@@ -12,7 +12,7 @@ void setup () {
   bgColor = color(0, 0, 98);
   background(bgColor);
   hint(DISABLE_DEPTH_TEST);
-  initPoints();
+  reset();
 }
 
 void initPoints() {

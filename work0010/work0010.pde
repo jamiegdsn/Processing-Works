@@ -9,7 +9,7 @@ int hue1;
 int hue2;
 
 void setup() {
-  size(2048, 1024, P3D);
+  size(2048, 1024, P2D);
   pixelDensity(displayDensity());
   colorMode(HSB, 360, 100, 100, 100);
   background(0, 0, 98);
