@@ -1,9 +1,9 @@
 int hue = 215, sat = 10, bri = 60;
 
 void setup() {
-  size(1000, 1000, P2D);
+  size(2048, 1024, P2D);
   pixelDensity(displayDensity());
-  smooth(8);
+  smooth(16);
   colorMode(HSB, 360, 100, 100, 100);
   rectMode(CENTER);
   noLoop();
@@ -11,8 +11,16 @@ void setup() {
 
 void draw() {
   background(hue, sat, bri);
-  translate(width/2, height/2);
-  branch(width * 0.8);
+  
+  float size = height * 0.8;
+  pushMatrix();
+  translate(width/2 - size/2, height/2);
+  branch(size);
+  popMatrix();
+  pushMatrix();
+  translate(width/2 + size/2, height/2);
+  branch(size);
+  popMatrix();
   saveFrame("frames/####.png");
 }
 
@@ -20,7 +28,7 @@ void branch(float size) {
   strokeWeight(0.5);
   stroke(hue, sat, bri);
   if (random(1) < 0.2) fill(hue, sat, bri);
-  else fill(hue, sat, random(10));
+  else fill(hue, sat, 5);
   rect(0, 0, size, size);
 
   float P = map(size, 5, width * 0.8, 0.5, 1);
@@ -64,6 +72,6 @@ void branch(float size) {
 }
 
 void mousePressed() {
-  hue = (int)random(360);
+  hue = (int)random(250);
   redraw();
 }
