@@ -1,4 +1,4 @@
-int hue = 215, sat = 10, bri = 60;
+int hue = 215, sat = 5, bri = 80;
 
 void setup() {
   size(2048, 1024, P2D);
@@ -21,7 +21,6 @@ void draw() {
   translate(width/2 + size/2, height/2);
   branch(size);
   popMatrix();
-  saveFrame("frames/####.png");
 }
 
 void branch(float size) {
@@ -72,6 +71,6 @@ void branch(float size) {
 }
 
 void mousePressed() {
-  hue = (int)random(250);
+  hue = (int)random(360);
   redraw();
 }
