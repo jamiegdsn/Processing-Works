@@ -1,5 +1,6 @@
 .DS_Store
 .vs
+.vscode
 applet
 application.linux32
 application.linux64
