@@ -5,12 +5,12 @@ color[] palette = new color[3];
 int pi = 1;
 
 void setup() {
-  size(500, 500, P2D);
+  size(1024, 1024, P2D);
   pixelDensity(displayDensity());
-  smooth(8);
+  smooth(16);
   colorMode(HSB, 360, 100, 100, 100);
   rectMode(CENTER);
-  noiseDetail(8, 0.6);
+  noiseDetail(8, 0.5);
   palette[0] = color(185, 80, 30);
   palette[1] = color(205, 80, 30);
   palette[2] = color(335, 80, 30);
@@ -30,8 +30,8 @@ void draw() {
 
   noFill();
   stroke(palette[pi]);
-  strokeWeight(3);
-  ellipse(0, 0, outerRectSize, outerRectSize);
+  strokeWeight(2);
+  rect(0, 0, outerRectSize, outerRectSize);
 
   noStroke();
   fill(palette[pi]);
