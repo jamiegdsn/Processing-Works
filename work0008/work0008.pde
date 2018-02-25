@@ -21,6 +21,8 @@ void draw() {
   translate(width/2 + size/2, height/2);
   branch(size);
   popMatrix();
+  
+  saveFrame("frames/####.png");
 }
 
 void branch(float size) {
