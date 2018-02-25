@@ -1,11 +1,11 @@
 class Particle {
   float x, y, z;
-  float unitZ;
+  float unitY;
   float radius;
   float theta, phi;
   float velocityMag = 0.01;
   float noiseScale = 0.15;
-  float sNoisePosX, sNoisePosY;
+  float noiseOffsetX, noiseOffsetY;
   color strokeColor;
   int layer;
 
@@ -13,10 +13,10 @@ class Particle {
     initAngle();
     int r = (int)random(4);
     switch (r) {
-      case 0: sNoisePosX =  100; sNoisePosY =  100; break;
-      case 1: sNoisePosX =  100; sNoisePosY = -100; break;
-      case 2: sNoisePosX = -100; sNoisePosY =  100; break;
-      case 3: sNoisePosX = -100; sNoisePosY = -100; break;
+      case 0: noiseOffsetX =  100; noiseOffsetY =  100; break;
+      case 1: noiseOffsetX =  100; noiseOffsetY = -100; break;
+      case 2: noiseOffsetX = -100; noiseOffsetY =  100; break;
+      case 3: noiseOffsetX = -100; noiseOffsetY = -100; break;
     }
     r = (int)random(100);
     if (r < 66) {
@@ -28,14 +28,14 @@ class Particle {
   }
 
   void initAngle() {
-    unitZ = random(-1, 1);
-    theta = acos(unitZ);
+    unitY = random(-1, 1);
+    theta = acos(unitY);
     phi = random(TWO_PI);
   }
 
   void update() {
-    float noisePosX = sNoisePosX + phi * noiseScale;
-    float noisePosY = sNoisePosY + theta * noiseScale;
+    float noisePosX = noiseOffsetX + phi * noiseScale;
+    float noisePosY = noiseOffsetY + theta * noiseScale;
     float angle = noise(noisePosX, noisePosY) * (4 * TWO_PI) - (2 * TWO_PI);
     if (layer <= 1) {
       radius = map(angle, - 2 * TWO_PI, 2 * TWO_PI, height * 0.5, height * 0.7);
@@ -45,7 +45,7 @@ class Particle {
 
     phi   += 2 * velocityMag * cos(angle);
     theta += velocityMag * sin(angle);
-    unitZ = cos(theta);
+    unitY = cos(theta);
 
     x = radius * sin(theta) * cos(phi);
     y = radius * cos(theta);

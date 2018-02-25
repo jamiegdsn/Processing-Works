@@ -5,7 +5,7 @@ int updateCount = 0;
 int hue;
 
 void setup() {
-  size(1024, 1024, P3D);
+  size(2048, 1024, P3D);
   pixelDensity(displayDensity());
   smooth(16);
   colorMode(HSB, 360, 100, 100, 100);
@@ -40,9 +40,9 @@ void draw() {
     }
 
     beginShape(LINES);
-    for (int i = 0;  i < numParticles; i++) {
+    for (int i = 0; i < numParticles; i++) {
       Particle from = particles.get(i);
-      for (int j = i + 1;  j < numParticles; j++) {
+      for (int j = i + 1; j < numParticles; j++) {
         Particle to = particles.get(j);
         float d = dist(from.x, from.y, from.z, to.x, to.y, to.z);
         float lengthLimit = map(abs(from.unitY + to.unitY), 0, 2, 30, 3);
@@ -54,7 +54,7 @@ void draw() {
     }
     endShape();
 
-    if (updateCount++ % 600 == 0) {
+    if (++updateCount % 600 == 0) {
       initPoints();
     }
   }
@@ -62,7 +62,11 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-    case 'r': reset(); break;
-    case 's': saveFrame("frames/####.png"); break;
+  case 'r': 
+    reset(); 
+    break;
+  case 's': 
+    saveFrame("frames/####.png"); 
+    break;
   }
 }
