@@ -9,17 +9,20 @@
 ## work0003
 ![](./img/work0003.png)
 
+## work0004
+![](./img/work0004.jpg)
+
+## work0005
+![](./img/work0005.jpg)
+
+## work0006
+![](./img/work0006.jpg)
+
 ## work0007
-![](./img/work0007.jpg)
+![](./img/work0007.png)
 
 ## work0008
-![](./img/work0008.jpg)
+![](./img/work0008.png)
 
-## work0010
-![](./img/work0010.jpg)
-
-## work0011_a
-![](./img/work0011_a.png)
-
-## work0011_b
-![](./img/work0011_b.png)
+## work0009
+![](./img/work0009.png)
