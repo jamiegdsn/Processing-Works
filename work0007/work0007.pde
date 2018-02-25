@@ -1,8 +1,8 @@
 float updateCount = 0;
 float outerRectSize, innerRectSize;
 
-color[] palette = new color[3];
-int pi = 1;
+color[] palette = new color[2];
+int THEME = 1;
 
 void setup() {
   size(1024, 1024, P2D);
@@ -11,9 +11,8 @@ void setup() {
   colorMode(HSB, 360, 100, 100, 100);
   rectMode(CENTER);
   noiseDetail(8, 0.5);
-  palette[0] = color(185, 80, 30);
-  palette[1] = color(205, 80, 30);
-  palette[2] = color(335, 80, 30);
+  palette[0] = color(210, 15, 90);
+  palette[1] = color(210, 80, 30);
   reset();
 }
 
@@ -21,7 +20,11 @@ void reset() {
   outerRectSize = width * 0.9;
   innerRectSize = width * 0.48;
   updateCount = 0;
-  background(hue(palette[pi]), 3, 98);
+  if (THEME == 0) {
+    background(hue(palette[THEME]), 98, 5);
+  } else if (THEME == 1) {
+    background(hue(palette[THEME]), 5, 98);
+  }
   noiseSeed(millis());
 }
 
@@ -29,12 +32,12 @@ void draw() {
   translate(width/2, height/2);
 
   noFill();
-  stroke(palette[pi]);
+  stroke(palette[THEME]);
   strokeWeight(2);
   rect(0, 0, outerRectSize, outerRectSize);
 
   noStroke();
-  fill(palette[pi]);
+  fill(palette[THEME]);
   rect(-30, 0, innerRectSize, innerRectSize);
 
   noFill();
@@ -46,7 +49,7 @@ void draw() {
 
       float x = innerRectSize/2 + updateCount * 0.1 -30;
       float y = -innerRectSize/2 + i * 0.5 + 0.5;
-      stroke(palette[pi], alpha);
+      stroke(palette[THEME], alpha);
       strokeWeight(0.5);
       point(x, y);
     }
@@ -56,7 +59,7 @@ void draw() {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("####.png");
+    saveFrame("frames/####.png");
   }
   if (key == 'r') {
     reset();
