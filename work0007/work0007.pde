@@ -2,7 +2,7 @@ float updateCount = 0;
 float outerRectSize, innerRectSize;
 
 color[] palette = new color[2];
-int THEME = 1;
+int THEME = 0;
 
 void setup() {
   size(1024, 1024, P2D);
