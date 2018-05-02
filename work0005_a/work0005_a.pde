@@ -34,8 +34,8 @@ void initPoints() {
 void draw() {
   translate(width/2, height/2, 0);
   rotateZ(HALF_PI);
-  r
-    strokeWeight(0.5);
+
+  strokeWeight(0.5);
   for (int f = 0; f < 10; f++) {
     for (Particle p : particles) {
       p.update();
@@ -64,11 +64,7 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-  case 'r': 
-    reset(); 
-    break;
-  case 's': 
-    saveFrame("frames/####.png"); 
-    break;
+    case 'r': reset(); break;
+    case 's': saveFrame("frames/####.png"); break;
   }
 }

@@ -3,7 +3,7 @@ class Particle {
   float unitY;
   float theta, phi;
   float velocityMag = 0.01;
-  float noiseScale = 0.08;
+  float noiseScale = 0.1;
   color strokeColor;
 
   Particle() {
@@ -24,7 +24,7 @@ class Particle {
     float angle = noiseValue * (4 * TWO_PI) - (2 * TWO_PI);
     float radius = map(noiseValue, 0, 1, height * 0.2, height * 0.4);
 
-    phi   += 2 * velocityMag * cos(angle);
+    phi   += velocityMag * cos(angle);
     theta += velocityMag * sin(angle);
     unitY = cos(theta);
 

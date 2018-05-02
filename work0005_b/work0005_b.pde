@@ -62,11 +62,7 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-  case 'r': 
-    reset(); 
-    break;
-  case 's': 
-    saveFrame("frames/####.png"); 
-    break;
+    case 'r': reset(); break;
+    case 's': saveFrame("frames/####.png"); break;
   }
 }
