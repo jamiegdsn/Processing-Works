@@ -10,16 +10,16 @@
 ![](./img/work0003.png)
 
 ## work0004
-![](./img/work0004.jpg)
+![](./img/work0004.png)
 
 ## work0005_a
-![](./img/work0005_a.jpg)
+![](./img/work0005_a.png)
 
 ## work0005_b
-![](./img/work0005_b.jpg)
+![](./img/work0005_b.png)
 
 ## work0006
-![](./img/work0006.jpg)
+![](./img/work0006.png)
 
 ## work0007
 ![](./img/work0007.png)

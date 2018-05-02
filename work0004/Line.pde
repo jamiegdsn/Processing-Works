@@ -17,7 +17,7 @@ class Line {
 
     sxNoise = new Noise(random(100), 0.001).setRange(-40, 40);
     syNoise = new Noise(random(100), 0.001).setRange(-40, 40);
-    angleNoise = new Noise(random(100), 0.00015).setRange(-TWO_PI, TWO_PI);
+    angleNoise = new Noise(random(100), 0.0001).setRange(-TWO_PI, TWO_PI);
     radiusNoise = new Noise(random(100), 0.0003).setRange(50, height);
   }
 

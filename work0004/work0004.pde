@@ -5,7 +5,7 @@ void setup() {
   size(2048, 1024, P2D);
   // RetinaとかのHigh-Resディスプレイ用の処理
   pixelDensity(displayDensity());
-  smooth(8);
+  smooth(16);
   // HSBカラーモード
   colorMode(HSB, 360, 100, 100, 100);
   // 加算合成で発光してるっぽくみせる
