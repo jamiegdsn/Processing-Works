@@ -1,3 +1,5 @@
+int[] palette = new int[5];
+
 void setup() {
   size(2048, 1024, P2D);
   pixelDensity(displayDensity());
@@ -7,7 +9,9 @@ void setup() {
 }
 
 void draw() {
-  background(210, 5, 98);
+  switchColor((int)random(palette.length));
+
+  background(palette[(int)random(2)], 5, 98);
 
   float size = height * 0.8;
   pushMatrix();
@@ -20,6 +24,31 @@ void draw() {
   popMatrix();
 
   saveFrame("frames/####.png");
+}
+
+void switchColor(int theme) {
+  switch(theme) {
+  case 0:
+    palette[0] = 15;
+    palette[1] = 210;
+    break;
+  case 1:
+    palette[0] = 338;
+    palette[1] = 232;
+    break;
+  case 2:
+    palette[0] = 41;
+    palette[1] = 191;
+    break;
+  case 3:
+    palette[0] = 185;
+    palette[1] = 335;
+    break;
+  case 4:
+    palette[0] = 325;
+    palette[1] = 35;
+    break;
+  }
 }
 
 void branch(float size) {
@@ -68,20 +97,17 @@ void drawGradationRect(float size) {
   int r = (int)random(4);
   rotate(r * HALF_PI);
 
-  int fromHue = 15;
-  int toHue   = 210;
-
   int pad = 1;
 
   beginShape();
 
   strokeWeight(0.5);
   stroke(0, 0, 0, 10);
-  fill(fromHue, 100, 100, 10);
+  fill(palette[0], 100, 100, 10);
   vertex(-size/2+pad, -size/2+pad);
   vertex(+size/2-pad, -size/2+pad);
 
-  fill(toHue, 100, 100, 10);
+  fill(palette[1], 100, 100, 10);
   vertex(+size/2-pad, +size/2-pad);
   vertex(-size/2+pad, +size/2-pad);
 
@@ -100,14 +126,11 @@ void drawGradationRect(float size) {
 }
 
 void drawRect(float size) {
-  int fromHue = 15;
-  int toHue   = 210;
-
   beginShape();
 
   strokeWeight(0.5);
   stroke(0, 0, 0, 10);
-  fill(random(1) < 0.5 ? fromHue : toHue, 100, 100);
+  fill(random(1) < 0.5 ? palette[0] : palette[1], 100, 100);
   vertex(-size/2, -size/2);
   vertex(+size/2, -size/2);
   vertex(+size/2, +size/2);
